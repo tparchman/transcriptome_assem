@@ -14,6 +14,14 @@ Make sure you work in the "working" directory
 
     $ cd working/jpalma
 
+## Transfering data to remote servers
+
+```Sh
+rsync -av eriogonum_RNAseq jpalma@ponderosa.biology.unr.edu:/working/jpalma/
+
+
+```
+
 ## Loading modules on Ponderosa
 
     $ module avail
@@ -26,11 +34,23 @@ Activates the specified tool, in this case it activates sratoolkit
 
 I am collecting raw RNAseq data from *Eriogonum*, using transriptome data from Walker et al. 2018 Am J Bot.
 
-### For rotundiflorum
+### For E. rotundiflorum
     $ fastq-dump --defline-seq '@$sn[_$rn]/$ri' --split-files SRR6435329
 
-### For callistum
+### For E. callistum
     $ fastq-dump --defline-seq '@$sn[_$rn]/$ri' --split-files SRR6435325
+
+### For E. inflatum
+    $ fastq-dump --defline-seq '@$sn[_$rn]/$ri' --split-files SRR6435283
+
+### For E. arcuatum
+    $ fastq-dump --defline-seq '@$sn[_$rn]/$ri' --split-files SRR6435289
+
+## Tools for assessing raw fastq files
+
+```Sh
+grep '^@' SRR6435283_1.fastq -c
+```
 
 ## Using `trinity` to assemble tne RNAseq data for each species
     $ module load Trinity/2.4.0
