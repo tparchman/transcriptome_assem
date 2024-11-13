@@ -17,7 +17,7 @@ Make sure you work in the "working" directory
 ## Transfering data to remote servers
 
 ```Sh
-rsync -av eriogonum_RNAseq jpalma@ponderosa.biology.unr.edu:/working/jpalma/
+$ rsync -av eriogonum_RNAseq jpalma@ponderosa.biology.unr.edu:/working/jpalma/
 
 
 ```
@@ -51,11 +51,13 @@ I am collecting raw RNAseq data from *Eriogonum*, using transriptome data from W
 ```Sh
 grep '^@' SRR6435283_1.fastq -c
 ```
+Finds all ID lines and counts the number of RNA fragments.
 
 ## Using `trinity` to assemble tne RNAseq data for each species
     $ module load Trinity/2.4.0
     $ module load bowtie2/2.2.5
     $ Trinity --seqType fq --max_memory 100G --left SRR6435329_1.fastq  --right SRR6435329_2.fastq --CPU > run.log 2>&1 &
+This would use `trinity` to assemble the E. rotundiflorum data that was previously pulled.
 
 ## De novo assembly of E. callistum from SRA using `trinity`
     $ module load Trinity/2.4.0
